@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+
+<!-- <mapper namespace="com.wcq.springcloud.servicea.repository.SysAdminMapper"> -->
+<mapper namespace="com.wcq.springcloud.servicea.dao.SysAdminDao">
+
+	<resultMap id="RM_SysAdmin" type="com.wcq.springcloud.servicea.entity.SysAdmin">
+        <result property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="userPwd" column="user_pwd"/>
+        <result property="createTime" column="create_time"/>
+        <result property="status" column="status"/>
+        <result property="updateTime" column="update_time"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+	    <![CDATA[
+		id,user_name,user_pwd,create_time,status,update_time
+	    ]]>
+	</sql>
+
+	<!-- useGeneratedKeys="true" keyProperty="xxx" for sqlserver and mysql -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    <![CDATA[
+        INSERT INTO sys_admin (
+				id ,
+				user_name ,
+				user_pwd ,
+				create_time ,
+				status ,
+				update_time
+        ) VALUES (
+				#{id} ,
+				#{userName} ,
+				#{userPwd} ,
+				#{createTime} ,
+				#{status} ,
+				#{updateTime}
+        )
+    ]]>
+	</insert>
+    
+	<update id="update" >
+        UPDATE sys_admin SET
+			<if test="userName != null">
+				user_name = #{userName} ,
+			</if>
+			<if test="userPwd != null">
+				user_pwd = #{userPwd} ,
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime} ,
+			</if>
+			<if test="status != null">
+				status = #{status} ,
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime} 
+			</if>
+			
+        WHERE 
+	        id = #{id} 
+	</update>
+
+    <delete id="delete">
+    <![CDATA[
+        DELETE FROM sys_admin WHERE
+        id = #{id} 
+    ]]>
+    </delete>
+    
+    <select id="getById" resultMap="RM_SysAdmin">
+		SELECT <include refid="columns" />
+	    <![CDATA[
+		    FROM sys_admin 
+	        WHERE 
+		        id = #{id} 
+	    ]]>
+	</select>
+	
+	<sql id="findPage_where">
+		<where>	      				
+	       <if test="id != null">
+				AND id = #{id}
+			</if>
+	       <if test="userName != null">
+				AND user_name = #{userName}
+			</if>
+	       <if test="userPwd != null">
+				AND user_pwd = #{userPwd}
+			</if>
+	       <if test="createTimeBegin != null">
+				AND create_time >= #{createTimeBegin}
+		   </if>
+		   <if test="createTimeEnd  != null">
+				AND create_time &lt;= #{createTimeEnd}
+		   </if>
+	       <if test="status != null">
+				AND status = #{status}
+			</if>
+	       <if test="updateTimeBegin != null">
+				AND update_time >= #{updateTimeBegin}
+		   </if>
+		   <if test="updateTimeEnd  != null">
+				AND update_time &lt;= #{updateTimeEnd}
+		   </if>
+		</where>
+	</sql>
+		
+    <select id="count" resultType="long">
+        SELECT count(id) FROM sys_admin 
+		<include refid="findPage_where"/>    
+    </select>
+
+    <select id="findAll" resultMap="RM_SysAdmin">
+    SELECT <include refid="columns"/> FROM sys_admin where 1=1
+    </select>
+
+    <select id="select" resultMap="RM_SysAdmin">
+    SELECT <include refid="columns"/> FROM sys_admin where 1=1
+    <include refid="findPage_where"/> limit 0,1
+    </select>
+
+    <select id="findPage" resultMap="RM_SysAdmin">
+    	SELECT <include refid="columns" />
+	    FROM sys_admin 
+		<include refid="findPage_where"/>
+    </select>
+
+	
+</mapper>
+
