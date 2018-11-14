@@ -1,0 +1,21 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: zipkin-server         #服务应用名称，
+  cloud:
+    config:
+      fail-fast: true         #执行快速失败
+      name: application, ${spring.application.name}      #调用的配置中心的配置文件名称，application.yml,service-b-config.yml
+      discovery:
+        enabled: true
+        service-id: config-server                        #配置中心configserver id
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    service-url:
+      defaultZone: http://peer1:10001/eureka/,http://peer2:10002/eureka/
+
