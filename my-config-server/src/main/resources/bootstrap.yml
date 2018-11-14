@@ -1,0 +1,30 @@
+server:
+  port: 6001
+
+spring:
+  application:
+    name: config-server     #应用名称
+#  profiles:
+#    active: dev            #在这里修改环境变量spring.profiles.active,或者启动时添加 -Dspring.profiles.active=prod
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/GitHub-wcq/spring-cloud-config     #git地址
+          username: GitHub-wcq
+          password: Ww541293
+          searchPaths: ${spring.profiles.active}        # git链接下的路径
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:10001/eureka/,http://peer2:10002/eureka/         #Eureka注册中心集群地址
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'             #暴露所有端点
+    health:
+      show-details: always       #总是进行健康监测
+
