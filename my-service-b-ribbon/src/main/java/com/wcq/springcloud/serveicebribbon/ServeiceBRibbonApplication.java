@@ -1,5 +1,6 @@
 package com.wcq.springcloud.serveicebribbon;
 
+import com.netflix.loadbalancer.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -19,6 +20,17 @@ public class ServeiceBRibbonApplication {
     @LoadBalanced
     RestTemplate restTemplate(){
         return new RestTemplate();
+    }
+
+    /**
+     * 自定义配置ribbon负载均衡算法
+     * @return
+     */
+    @Bean
+    public IRule iRule(){
+//        return new RoundRobinRule();  //轮询算法
+//        return new RetryRule();
+        return new RandomRule();   //随机算法
     }
 
 }

@@ -1,22 +1,24 @@
 spring:
   application:
-    name: admin-server         #服务应用名称，
+    name: service-b-hystrix
   cloud:
     config:
       fail-fast: true         #执行快速失败
-      name: application      #调用的配置中心的配置文件名称，application.yml
+      name: application, ${spring.application.name}     #调用的配置中心的配置文件名称，application.yml,service-b-config.yml
       discovery:
-        enabled: true       # 表示开启通过服务名来访问config-server
+        enabled: true         # 表示开启通过服务名来访问config-server
         service-id: config-server                        #配置中心configserver id
 
 eureka:
   instance:
     prefer-ip-address: true     # 访问的路径变为IP地址
     lease-renewal-interval-in-seconds: 60 # 设置心跳的时间间隔（默认是30秒）
-    instance-id: admin-server              # 在信息列表时显示主机名称
   client:
     service-url:
       defaultZone: http://peer1:10001/eureka/,http://peer2:10002/eureka/
 
 server:
-  port: 6021
+  port: 8031
+
+# 微服务之springCloud-hystrix参数详解（八）
+# https://www.cnblogs.com/520playboy/p/8074347.html

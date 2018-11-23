@@ -6,9 +6,12 @@ spring:
       fail-fast: true         #执行快速失败
       name: application, ${spring.application.name}     #调用的配置中心的配置文件名称，application.yml,service-b-config.yml
       discovery:
-        enabled: true
+        enabled: true         # 表示开启通过服务名来访问config-server
         service-id: config-server                        #配置中心configserver id
 eureka:
+  instance:
+    prefer-ip-address: true     # 访问的路径变为IP地址
+    lease-renewal-interval-in-seconds: 60 # 设置心跳的时间间隔（默认是30秒）
   client:
     service-url:
       defaultZone: http://peer1:10001/eureka/,http://peer2:10002/eureka/
