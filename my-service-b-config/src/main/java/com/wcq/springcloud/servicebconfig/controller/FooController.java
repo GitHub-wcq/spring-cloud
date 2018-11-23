@@ -15,15 +15,17 @@ public class FooController {
     String fooVersion;
     @Value("${envvvv: dev}")
     String envvvv;
+    @Value("${server.port}")
+    String port;
 
     @GetMapping("/getFooVersion")
     public String getFooVersion(){
-        return fooVersion;
+        return fooVersion + " ; from " + port;
     }
 
     @GetMapping("/getEnvvvv")
     public String getEnvvvv(){
-        return envvvv;
+        return envvvv + " ; from " + port;
     }
 
 }

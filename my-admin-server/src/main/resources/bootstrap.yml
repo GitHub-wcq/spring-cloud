@@ -17,4 +17,4 @@ eureka:
       defaultZone: http://peer1:10001/eureka/,http://peer2:10002/eureka/
 
 server:
-  port: 8081
+  port: 6021

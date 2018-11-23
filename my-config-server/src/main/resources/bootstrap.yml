@@ -25,6 +25,7 @@ management:
     web:
       exposure:
         include: '*'             #暴露所有端点
+  endpoint:
     health:
-      show-details: always       #总是进行健康监测
+      show-details: always       # 总是显示完整的health 详情
 
