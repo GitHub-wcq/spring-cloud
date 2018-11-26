@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: service-b-feign #服务应用名称
+  cloud:
+    config:
+      fail-fast: true
+      name: application, ${spring.application.name}   #调用的配置中心的配置文件名称，application.yml,service-b-feign.yml
+      discovery:
+        enabled: true
+        service-id: config-server
+
+# 在feign中使用hystrix，需要添加feign.hystrix.enabled=true
+feign:
+  hystrix:
+    enabled: true
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://peer1:10001/eureka/,http://peer2:10002/eureka/
+
+
+server:
+  port: 8041
