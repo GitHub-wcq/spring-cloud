@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: zuul-service
+  cloud:
+    config:
+      fail-fast: true
+      name: application, ${spring.application.name} # application.yml,zuul-service.yml
+      discovery:
+        enabled: true
+        service-id: config-server # 依赖config-server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:10001/eureka/,http://peer2:10002/eureka/
+
+
+server:
+  port: 6051
