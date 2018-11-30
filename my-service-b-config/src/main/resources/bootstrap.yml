@@ -15,5 +15,15 @@ eureka:
   client:
     service-url:
       defaultZone: http://peer1:10001/eureka/,http://peer2:10002/eureka/
+
+
 #server:
-#  port: 8011
+#  servlet:
+#    # Context path of the application.应用程序的上下文路径。配置统一前缀v
+#    context-path: /svcbcfg #设置完这个所有的actuator端口路径前必须也加上/svcbcfg，admin就监控不到了，先注释吧
+
+#management:
+#  endpoints:
+#    web:
+#      #自定义管理端点路径。将端点从/actuator/{id}更改为/svcbcfg/{id}（例如/svcbcfg/info）。
+#      base-path: ${server.servlet.context-path}
