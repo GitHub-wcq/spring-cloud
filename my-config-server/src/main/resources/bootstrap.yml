@@ -4,8 +4,8 @@ server:
 spring:
   application:
     name: config-server     #应用名称
-#  profiles:
-#    active: dev            #在这里修改环境变量spring.profiles.active,或者启动时添加 -Dspring.profiles.active=prod
+  profiles:
+    active: dev            #在这里修改环境变量spring.profiles.active,或者启动时添加 -Dspring.profiles.active=prod
   cloud:
     config:
       server:
