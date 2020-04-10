@@ -11,7 +11,7 @@
 	<groupId>com.wcq</groupId>
 	<artifactId>spring-cloud-consul</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-cloud-consul</name>
+	<name>spring-cloud-consul-2</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

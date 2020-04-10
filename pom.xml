@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.wcq</groupId>
-	<artifactId>spring-cloud-consul</artifactId>
+	<artifactId>spring-cloud</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-cloud-consul-3</name>
+	<name>spring-cloud</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -21,18 +21,6 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
