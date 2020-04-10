@@ -28,7 +28,7 @@ public class RabbitmqDirectProducerUtil {
             String message1 = "direct-exchange = direct-echg-rk-one , 发送消息 ： " + LocalDateTime.now().toString();
             channel.basicPublish(exchangeName,routingKey1,null,message1.getBytes());
             String message2 = "direct-exchange = direct-echg-rk-two , 发送消息 ： " + LocalDateTime.now().toString();
-            channel.basicPublish(exchangeName,routingKey1,null,message2.getBytes());
+            channel.basicPublish(exchangeName,routingKey2,null,message2.getBytes());
         }
         System.out.println("消息发送成功");
         channel.close();
