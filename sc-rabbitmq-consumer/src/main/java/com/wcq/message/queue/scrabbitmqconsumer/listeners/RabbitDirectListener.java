@@ -28,8 +28,8 @@ public class RabbitDirectListener {
             log.info("[ consumer ] : {}",msg);
         } catch (Exception e){
             //如果我们把channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,true);中最后一个参数改为false呢，会发现在web管理界面没有未被消费的消息，说明这条消息已经被摒弃。
-            //实际开发中，到底是打回到队列呢还是摒弃，要看自己的需求，但是打回队列应该有次数限制，不然会陷入死循环。
-            channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,false);
+            //(true代表打回队列继续消费)实际开发中，到底是打回到队列呢还是摒弃，要看自己的需求，但是打回队列应该有次数限制，不然会陷入死循环。
+            channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,true);
             e.printStackTrace();
         }
     }
