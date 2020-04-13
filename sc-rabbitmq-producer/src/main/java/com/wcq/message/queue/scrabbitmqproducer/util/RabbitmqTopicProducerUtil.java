@@ -1,7 +1,6 @@
 package com.wcq.message.queue.scrabbitmqproducer.util;
 
 import com.rabbitmq.client.*;
-import org.omg.CORBA.TRANSACTION_MODE;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -25,6 +24,7 @@ public class RabbitmqTopicProducerUtil {
 
     public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
         ConnectionFactory factory = new ConnectionFactory();
+        factory.setVirtualHost("/test-vhost");
         factory.setPassword("guest");
         factory.setUsername("guest");
 
