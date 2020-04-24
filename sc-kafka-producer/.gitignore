@@ -1,5 +1,8 @@
+HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
 
 ### STS ###
 .apt_generated
@@ -8,26 +11,21 @@ target/
 .project
 .settings
 .springBeans
-*.log
+.sts4-cache
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
-*.log
 
 ### NetBeans ###
-nbproject/private/
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 build/
-nbbuild/
-dist/
-nbdist/
-logs/
-.nb-gradle/
-.idea
-*.iml
-.idea
-*.iml
-/sc-kafka-producer/.mvn/
-/sc-kafka-consumer/.mvn/wrapper/
+
+### VS Code ###
+.vscode/
