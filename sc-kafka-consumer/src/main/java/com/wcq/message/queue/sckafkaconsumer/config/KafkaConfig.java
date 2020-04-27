@@ -40,6 +40,10 @@ public class KafkaConfig {
          * Consumer session 过期时间。这个值必须设置在broker configuration中的group.min.session.timeout.ms 与 group.max.session.timeout.ms之间。
          */
         properties.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG,30000);
+        /**
+         * 一次性获取的数量
+         */
+        properties.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG,"5");
 
         /**
          * key.serializer,value.serializer说明了使用何种序列化方式将用户提供的key和vaule值序列化成字节。
