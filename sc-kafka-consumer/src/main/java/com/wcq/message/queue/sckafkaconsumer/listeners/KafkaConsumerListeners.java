@@ -18,7 +18,7 @@ import java.util.Map;
 @Component
 public class KafkaConsumerListeners {
 
-    @KafkaListener(id = "kafka-consumer-client-1", groupId = "test-group-1", topics = "test")
+    @KafkaListener(id = "kafka-consumer-client-1", groupId = "test-group-1", topics = "test",concurrency = "2")
     public void consumeMsg(ConsumerRecord<String,Object> record,
                            @Header(KafkaHeaders.RECEIVED_TOPIC) String topic,
                            Consumer consumer, Acknowledgment ack){
